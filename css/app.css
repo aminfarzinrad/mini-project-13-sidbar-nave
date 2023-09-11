@@ -29,15 +29,56 @@ body{
     align-items: center;
 }
 /* start side bar */
-.side-bar-nav{}
+.side-bar-nav{
+    position: relative;
+}
+.label{
+    cursor: pointer;
+}
+.label::before{
+    display: block;
+    position: absolute;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 100%;
+    z-index: 100;
+    left: -9px;
+    top: 26px;
+    transition: all 250ms ease-out;
+}
+.label:hover::before{
+    background-color: #000;
+}
+.label::after{
+   display: block; 
+   position: absolute;
+   content: '';
+   z-index: 120;
+   top: 33px;
+   left: 1px;
+   border-bottom: 1px solid #000;
+   border-right: 1px solid #000;
+   width: 10px;
+   height: 10px;
+   transform: rotate(137deg);
+   transition: all 250ms ease-out;
+}
+.label:hover::after{
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;    
+}
 .side-bar-list{
-    width: 10.5rem;
+    width: 5.5rem;
     border: 1px solid rgba(255, 255, 255, 0.6);
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(22px);
     border-radius: 10px;
     height: 534px;
     padding: 24px;
+    transition: all 250ms ease-out;
 }
 .side-bar-item{
     color: #fff;
@@ -48,6 +89,14 @@ body{
     padding: 4px 5px;
     flex-wrap: nowrap;
     border-radius: 5px;
+    transition: all 250ms ease-out;
+    position: relative;
+}
+.side-bar-item:hover{
+    background-color: #fff;
+}
+.side-bar-item:hover *{
+    color: #000;
 }
 .icon{
     font-size: 33px;
@@ -55,5 +104,31 @@ body{
 .side-bar-link{
     color: #fff;
     flex: 1;
-    align-items: center;
+    text-align: center;
+    transform: translateX(26px);
+    opacity: 0;
+    transition: all 250ms ease-out;
+}
+.number{
+    position: absolute;
+    left: -22px;
+    background-color: #eb2a46;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 5px;
+}
+#toggle:checked + label + ul{
+    width: 10.5rem;
+}
+#toggle:checked + label + ul li a{
+    transform: translateX(0px);
+    opacity: 1;    
+}
+#toggle:checked + label::after{
+    left: -3px;
+    top: 33px;
+    transform: rotate(318deg);
 }
